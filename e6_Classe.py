@@ -1,4 +1,6 @@
 
+import heapq
+
 class Tarefa:
     def __init__(self, descricao, prioridade):
         self.descricao = descricao
@@ -29,23 +31,24 @@ for i in range(nTarefas):
             exit()
         else:
             tarefa = Tarefa(desc, prior)
-            if len(tarefas) == 0:
-                tarefas.append(tarefa)
-            else:
-                insert = False
-                for i in range( len(tarefas) ):
-                    if tarefa.getPrioridade() >= tarefas[i].getPrioridade():
-                        tarefas.insert(i, tarefa)
-                        insert = True
-                        break
-                if insert == False:
-                    tarefas.append(tarefa)
+            heapq.heappush(tarefas, (tarefa.prioridade, tarefa.descricao))
+            #if len(tarefas) == 0:
+             #   tarefas.append(tarefa)
+            #else:
+               # insert = False
+               # for i in range( len(tarefas) ):
+                #    if tarefa.getPrioridade() >= tarefas[i].getPrioridade():
+                #       tarefas.insert(i, tarefa)
+                #      insert = True
+                #     break
+                #if insert == False:
+                 #   tarefas.append(tarefa)
     except ValueError:
         print("Ocorreu um erro, tente novamente.")
         exit()
 else:
     for i in range(nTarefas):
-        print(tarefas[i].getDescricao(), tarefas[i].getPrioridade())
+        print(heapq.heappop(tarefas))
 
 
     
