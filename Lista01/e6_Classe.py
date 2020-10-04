@@ -19,7 +19,7 @@ class Tarefa:
         return self.prioridade
 
 tarefas = []
-nTarefas = 10
+nTarefas = 3
 
 for i in range(nTarefas):
     try:
